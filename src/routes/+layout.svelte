@@ -1,23 +1,7 @@
 <script>
-	import Header from '$lib/header/Header.svelte';
-  import { webVitals } from '$lib/vitals';
-  import { browser } from '$app/env';
-  import { page } from '$app/stores';
-  import '../app.css';
+	import '../app.css';
 
-  let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
-
-  $: if (browser && analyticsId) {
-    webVitals({
-      path: $page.url.pathname,
-      params: $page.params,
-      analyticsId
-    })
-  }
+	let { children } = $props();
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
+{@render children()}
